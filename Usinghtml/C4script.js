@@ -6,6 +6,11 @@ let bcount = 0;
 let wcount = 1;
 const user = [{Name :"Player 1",color:"red"},{Name : "Player 2",color:"blue"}];
 let k=1; //0 = p1; 1=p2 
+
+/* 
+TODO: Too much redundancy. The board, columns and buttons can easily be initialized using loops.
+*/
+
 const board =[[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2]];
 const col =[{c:document.querySelector("#col1"),index:6},
     {c:document.querySelector("#col2"),index:6},
@@ -79,6 +84,7 @@ function play(){
   // for (let i = 0; i < 7; i++) {
   //     col[i].onclick = () => fill(col[i],i);  
   // }
+  // TODO: Why is the above code commented?
   col[0].c.onclick = () => fill(col[0],0);  
   col[1].c.onclick = () => fill(col[1],1);  
   col[2].c.onclick = () => fill(col[2],2);  
@@ -108,8 +114,8 @@ function fill(col,i){
 }
 
 function isGameOver(){
-  console.log("This game sucks.");
-  if(bcount>41){
+  console.log("This game sucks."); //TODO: Avoid personal opinions while coding ;p
+  if(bcount>41){ //Question: Why 41? Another Magic Number :(
   return true;
   }
   if(bcount>6){
@@ -141,6 +147,9 @@ function endgame(){
   playbutton.onclick = () => location.reload();  // Restart the game on click
 }
 
+/* 
+Suggestion: need inline comments to explain logic here
+*/
 
 function wincon(i,j,p,q){
   console.log("w? "+i+" "+j+":"+p+" "+q+" ,"+wcount);
@@ -210,3 +219,9 @@ function wincon(i,j,p,q){
   }
   return false;
 }
+
+/* 
+TODO:
+Another task, try to break down functions into different .js files and import them. 
+General rule of thumb: do not write big functions (>25 LOC) & big files.
+ */
