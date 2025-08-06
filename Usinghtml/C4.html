@@ -2,80 +2,8 @@
 <html>
 <head>
     <link rel = "icon" href = "kaktus.jpg"> 
-    <!-- TODO: Add a c4style.css and import it here. Good practice to keep HTML & CSS different -->
-    <style>
-    *{
-        color-scheme: dark;
-    }
-    body{
-        /* background-color:grey; */
-        text-align: center;
-    }
-    .header{
-        margin-bottom:20px;
-        border:2px solid cyan;
-        background-color: beige;
-        color: black;
-    }
-    .footer{
-        margin-top:20px;
-        border:2px solid cyan;
-        text-align: left !important;
-        background-color: beige;
-        color: black;
-    }
-    .board{
-       background: cyan; 
-       border:5px solid red;
-       display: inline-block;
-       border-radius:20px;
-       margin: 15px;
-       max-width: 700px; 
-       max-height: 600px;
-       box-shadow:  2px 2px 2px white;
-    }
-    .cushion{
-        display: flex;
-        flex-direction: row;
-        padding: 20px;
-        padding-top: 10%;
-        margin: 6px;
-        border-radius: 10px;
-        background-color: black;
-    }
-    .buttons{
-        background-color: beige;
-        margin-left:20px;
-        margin-right:20px;
-        border-radius: 60%;
-        /* background-color: white; */
-        padding: 15px ;
-    }
-    .buttons:hover{
-        opacity:0.7;
-        transform: scale(1.05);
-        transition: all 0.2s ease-out;
-    }
-    .msgs{
-        margin: 10px;
-    }
-
-    #playbutn:hover,#endscore:hover{
-        color: beige;
-        font-weight:bold;
-        border :red solid;
-        padding: 13px;
-        box-shadow: 1px 1px 2.5px black;
-        border-radius: 50%;
-        text-decoration: double underline;
-        transition: all 0.2s ease-out;
-    }
-    #endscore,#playbutn{
-        font-style:inherit;
-        display:inline;
-        
-    }
-    </style>
+    <link rel ="stylesheet" href ="c4style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sifo</title>
 </head>
 <body>  
@@ -88,69 +16,68 @@
     <br>
     <div class = "board">
         <div class="cushion">
-            <!-- TODO: Try to render board at runtime using JS. Read question below :) -->
             <span id ="col1">
-                <a  class="buttons" id= "button11"></a> <br><br><br><br>   
-                <a  class="buttons" id="button21"></a> <br><br><br><br>
-                <a  class="buttons" id="button31"></a> <br><br><br><br>   
-                <a class="buttons" id="button41"></a> <br><br><br><br>   
-                <a class="buttons" id="button51"></a> <br> <br><br><br>  
-                <a class="buttons" id="button61"></a> <br> <br><br> <br> 
+                <a  class="buttons" id= "button11"></a>    
+                <a  class="buttons" id="button21"></a> 
+                <a  class="buttons" id="button31"></a>    
+                <a class="buttons" id="button41"></a>    
+                <a class="buttons" id="button51"></a>   
+                <a class="buttons" id="button61"></a>  
             </span>
             <span id ="col2">
-                <a class="buttons" id="button12"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button22"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button32"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button42"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button52"></a> <br> <br><br><br>  
-                <a class="buttons" id="button62"></a> <br>  <br><br> <br> 
+                <a class="buttons" id="button12"></a>  
+                <a class="buttons" id="button22"></a>  
+                <a class="buttons" id="button32"></a>  
+                <a class="buttons" id="button42"></a>  
+                <a class="buttons" id="button52"></a>   
+                <a class="buttons" id="button62"></a>  
             </span>
             <span id ="col3">
-                <a class="buttons" id="button13"></a> <br> <br><br><br>  
-                <a class="buttons" id="button23"></a> <br> <br><br><br>  
-                <a class="buttons" id="button33"></a> <br> <br><br><br>  
-                <a class="buttons" id="button43"></a> <br> <br><br><br>  
-                <a class="buttons" id="button53"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button63"></a> <br>  <br><br> <br> 
+                <a class="buttons" id="button13"></a>   
+                <a class="buttons" id="button23"></a>   
+                <a class="buttons" id="button33"></a>   
+                <a class="buttons" id="button43"></a>   
+                <a class="buttons" id="button53"></a>  
+                <a class="buttons" id="button63"></a>  
             </span>
             <span id ="col4">
-                <a class="buttons" id="button14"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button24"></a> <br> <br><br><br>  
-                <a class="buttons" id="button34"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button44"></a> <br> <br><br><br>  
-                <a class="buttons" id="button54"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button64"></a> <br> <br><br><br>  
+                <a class="buttons" id="button14"></a>  
+                <a class="buttons" id="button24"></a>   
+                <a class="buttons" id="button34"></a>  
+                <a class="buttons" id="button44"></a>   
+                <a class="buttons" id="button54"></a>  
+                <a class="buttons" id="button64"></a>   
             </span>
             <span id ="col5">
-                <a class="buttons" id="button15"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button25"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button35"></a> <br>  <br><br> <br> 
-                <a class="buttons" id="button45"></a> <br> <br><br>  <br>
-                <a class="buttons" id="button55"></a> <br> <br><br>  <br>
-                <a class="buttons" id="button65"></a> <br> <br><br>  <br>
+                <a class="buttons" id="button15"></a>  
+                <a class="buttons" id="button25"></a>  
+                <a class="buttons" id="button35"></a>  
+                <a class="buttons" id="button45"></a> 
+                <a class="buttons" id="button55"></a> 
+                <a class="buttons" id="button65"></a> 
             </span>
             <span id ="col6">
-                <a class="buttons" id="button16"></a> <br> <br><br> <br> 
-                <a class="buttons" id="button26"></a> <br> <br><br><br>  
-                <a class="buttons" id="button36"></a> <br> <br><br><br>  
-                <a class="buttons" id="button46"></a> <br> <br><br><br>  
-                <a class="buttons" id="button56"></a> <br> <br><br>  <br>
-                <a class="buttons" id="button66"></a> <br> <br><br>  <br>
+                <a class="buttons" id="button16"></a>  
+                <a class="buttons" id="button26"></a>   
+                <a class="buttons" id="button36"></a>   
+                <a class="buttons" id="button46"></a>   
+                <a class="buttons" id="button56"></a> 
+                <a class="buttons" id="button66"></a> 
             </span>
             <span id ="col7">
-                <a class="buttons" id="button17"></a> <br> <br><br>  <br>
-                <a class="buttons" id="button27"></a> <br> <br><br>  <br>
-                <a class="buttons" id="button37"></a> <br> <br><br>  <br>
-                <a class="buttons" id="button47"></a> <br> <br><br>  <br>
-                <a class="buttons" id="button57"></a> <br> <br><br>  <br>
+                <a class="buttons" id="button17"></a> 
+                <a class="buttons" id="button27"></a> 
+                <a class="buttons" id="button37"></a> 
+                <a class="buttons" id="button47"></a> 
+                <a class="buttons" id="button57"></a> 
                 <a class="buttons" id="button67"></a>  
             </span>
-            <!-- Question: Why only 7? What if some player wants a bigger board? Read about magic numbers and how to tackle them!-->
         </div>
     </div>
     <div class = "footer">
         <h3>-By Mr.29</h3>
     </div>
-    <script  src="C4script.js"></script>
+    <script type="module" src="C4script.js"></script>
 </body>
 </html>
+

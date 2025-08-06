@@ -1,227 +1,53 @@
+import { changeturn,fill } from "./turn.js"
 
-const playbutton = document.querySelector("#playbutn");
-const msgbutton = document.querySelector("#endscore");
-playbutton.onclick = play;
-let bcount = 0;
-let wcount = 1;
-const user = [{Name :"Player 1",color:"red"},{Name : "Player 2",color:"blue"}];
-let k=1; //0 = p1; 1=p2 
+export const state={
 
-/* 
-TODO: Too much redundancy. The board, columns and buttons can easily be initialized using loops.
-*/
+playbutton : document.querySelector("#playbutn"),
 
-const board =[[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2]];
-const col =[{c:document.querySelector("#col1"),index:6},
+msgbutton : document.querySelector("#endscore"),
+
+//bcount counts number of filled tiles
+bcount : 0,
+
+//user array and their colour
+user :  [{Name :"Player 1",color:"red"},{Name : "Player 2",color:"blue"}],
+
+//k is index for user array
+k:1,
+
+//col array so player can interact with the col to stack up coins instead of only interacting with bottommost unfilled one
+//index filling starts from 6 and decrements to fill from bottom
+col : [{c:document.querySelector("#col1"),index:6},
     {c:document.querySelector("#col2"),index:6},
     {c:document.querySelector("#col3"),index:6},
     {c:document.querySelector("#col4"),index:6},
     {c:document.querySelector("#col5"),index:6},
     {c:document.querySelector("#col6"),index:6},
-    {c:document.querySelector("#col7"),index:6}];
+    {c:document.querySelector("#col7"),index:6}],
 
-const buttons = [
-  [
-          document.querySelector("#button11"),
-          document.querySelector("#button12"),
-          document.querySelector("#button13"),
-          document.querySelector("#button14"),
-          document.querySelector("#button15"),
-          document.querySelector("#button16"),
-          document.querySelector("#button17")
-  ],[
-          document.querySelector("#button21"),
-          document.querySelector("#button22"),
-          document.querySelector("#button23"),
-          document.querySelector("#button24"),
-          document.querySelector("#button25"),
-          document.querySelector("#button26"),
-          document.querySelector("#button27")
-  ],[
-          document.querySelector("#button31"),
-          document.querySelector("#button32"),
-          document.querySelector("#button33"),
-          document.querySelector("#button34"),
-          document.querySelector("#button35"),
-          document.querySelector("#button36"),
-          document.querySelector("#button37")
-  ],[
-          document.querySelector("#button41"),
-          document.querySelector("#button42"),
-          document.querySelector("#button43"),
-          document.querySelector("#button44"),
-          document.querySelector("#button45"),
-          document.querySelector("#button46"),
-          document.querySelector("#button47")
-  ],[
-          document.querySelector("#button51"),
-          document.querySelector("#button52"),
-          document.querySelector("#button53"),
-          document.querySelector("#button54"),
-          document.querySelector("#button55"),
-          document.querySelector("#button56"),
-          document.querySelector("#button57")
-  ],[
-          document.querySelector("#button61"),
-          document.querySelector("#button62"),
-          document.querySelector("#button63"),
-          document.querySelector("#button64"),
-          document.querySelector("#button65"),
-          document.querySelector("#button66"),
-          document.querySelector("#button67")
-  ]
-];
-      
-function changeturn(){
-  k=(k+1)%2; 
-  msgbutton.innerText= `${user[k].Name}'s turn. Click a column.`;
-  console.log("Yipp"); 
-}
+//board array used to mark block coloured by user K and find winning path.
+board : [[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2]],
+};
+
+//boolean value to decide to end(1) or continue(0) game
+let game = false;   
+
+state.playbutton.onclick = play;
+//console.log(playbutton); 
+    
 function play(){
-  playbutton.style.display = "none";
+  //col to detect which col was chosen, k to detect which index user is playing,
+  //msgbutton to show particular player's turn
+  state.playbutton.style.display = "none";
   console.log("Play function called!"); 
   changeturn();
-  // for (let i = 0; i < 7; i++) {
-  //     col[i].onclick = () => fill(col[i],i);  
-  // }
-  // TODO: Why is the above code commented?
-  col[0].c.onclick = () => fill(col[0],0);  
-  col[1].c.onclick = () => fill(col[1],1);  
-  col[2].c.onclick = () => fill(col[2],2);  
-  col[3].c.onclick = () => fill(col[3],3);  
-  col[4].c.onclick = () => fill(col[4],4);  
-  col[5].c.onclick = () => fill(col[5],5);  
-  col[6].c.onclick = () => fill(col[6],6); 
-  console.log("eeee");  
-}
-function fill(col,i){
-    console.log("Phil"); 
-    col.index--;
-    buttons[col.index][i].style.backgroundColor = user[k].color;
-    board[col.index][i] = k;
-    bcount++;
-    // if(col.index <= 0){
-    //   col.c.onclick() = null;
-    // }
-    // k = (k+1)%2;
-    // playbutton.innerText = `${user[k].Name}'s turn. Click a column.`
-    if (isGameOver()) {
-    endgame();
-    }
-    else{
-    play();
-    }
+  state.col[0].c.onclick = () => {game = fill(0)};  
+  state.col[1].c.onclick = () => {game = fill(1)};  
+  state.col[2].c.onclick = () => {game = fill(2)};  
+  state.col[3].c.onclick = () => {game = fill(3)};  
+  state.col[4].c.onclick = () => {game = fill(4)};  
+  state.col[5].c.onclick = () => {game = fill(5)};  
+  state.col[6].c.onclick = () => {game = fill(6)}; 
+
 }
 
-function isGameOver(){
-  console.log("This game sucks."); //TODO: Avoid personal opinions while coding ;p
-  if(bcount>41){ //Question: Why 41? Another Magic Number :(
-  return true;
-  }
-  if(bcount>6){
-    for(let i=5;i>=0;i--){
-      for(let j=6;j>=0;j--){
-      if(board[i][j] == k){
-        if(wincon(i,j,i,j)){
-        return true;
-        }
-      }
-      }
-    }
-  }
-  return false;
-}
-function endgame(){
-  console.log("FIN");
-  for (let i = 0; i < col.length; i++) {
-    col[i].c.onclick = null;  // This removes the onclick event handler
-  }
-  playbutton.style.display = "inline";
-  playbutton.innerText = "Game ended. Click to restart.";
-  if(bcount>41){
-    msgbutton.innerText = `Tied Game`;
-  }
-  else{
-  msgbutton.innerText = `${user[k].Name} Won !!!`;
-  }
-  playbutton.onclick = () => location.reload();  // Restart the game on click
-}
-
-/* 
-Suggestion: need inline comments to explain logic here
-*/
-
-function wincon(i,j,p,q){
-  console.log("w? "+i+" "+j+":"+p+" "+q+" ,"+wcount);
-  if(wcount>=4){
-    console.log("Woohoo.");
-    return true;
-  }
-  if(i==p){
-      if(j+1<=6 && j+1!=q && board[i][j]==board[i][j+1]){
-        wcount++;
-        if(wincon(i,j+1,p,j)){
-          return true;
-        }
-        wcount--;
-      }
-      if(j-1>=0 && j-1!=q && board[i][j]==board[i][j-1]){
-        wcount++;
-        if(wincon(i,j-1,p,j)){
-          return true;
-        }
-        wcount--;
-      }
-  }
-  if(j==q){
-    if(i+1<=5 && i+1!=p && board[i][j]==board[i+1][j]){
-      wcount++;
-      if(wincon(i+1,j,i,q)){
-        return true;
-      }
-      wcount--;
-    }
-    if(i-1>=0 && i-1!=p && board[i][j]==board[i-1][j]){
-      wcount++;
-      if(wincon(i-1,j,i,q)){
-        return true;
-      }
-      wcount--;
-    }
-  }
-  if(i-1>=0 && j-1>=0 && ((i==p && j==q) || (i + 1 == p && j+1==q)) && board[i][j]==board[i-1][j-1]){
-    wcount++;
-    if(wincon(i-1 ,j-1,i,j)){
-      return true;
-    }
-    wcount--;
-  }
-  if(i-1>=0 && j+1<=6 && ((i==p && j==q) || (i + 1 == p && j-1==q)) && board[i][j]==board[i-1][j+1]){
-    wcount++;
-    if(wincon(i-1 ,j+1,i,j)){
-      return true;
-    }
-    wcount--;
-  }
-  if(i+1<=5 && j-1>=0 && ((i==p && j==q) || (i - 1 == p && j+1==q)) && board[i][j]==board[i+1][j-1]){
-    wcount++;
-    if(wincon(i+1 ,j-1,i,j)){
-      return true;
-    }
-    wcount--;
-  }
-  if(i+1<=5 && j+1<=6 && ((i==p && j==q) || (i - 1 == p && j-1==q)) && board[i][j]==board[i+1][j+1]){
-    wcount++;
-    if(wincon(i+1 ,j+1,i,j)){
-      return true;
-    }
-    wcount--;
-  }
-  return false;
-}
-
-/* 
-TODO:
-Another task, try to break down functions into different .js files and import them. 
-General rule of thumb: do not write big functions (>25 LOC) & big files.
- */

@@ -1,0 +1,108 @@
+* {
+    color-scheme: dark;
+}
+body {
+    /* background-color:grey; */
+    text-align: center;
+}
+.header {
+    min-width: 100%;
+    margin-bottom: 1.25rem;
+    border: 0.125rem solid cyan;
+    background-color: beige;
+    color: black;
+}
+.footer {
+    min-width: 100%;
+    margin-top: 1.25rem;
+    border: 0.125rem solid cyan;
+    text-align: left !important;
+    background-color: beige;
+    color: black;
+}
+.board {
+    border: 0.3125rem solid red;
+    padding: 0.625rem;
+    display: inline-block;
+    border-radius: 1.25rem;
+    margin: 0.9375rem;
+    box-shadow: 0.125rem 0.125rem 0.125rem beige;
+    width: 100%;
+    max-width: 50.5rem;      
+    max-height: 45rem;       
+}
+
+.cushion {
+    border: cyan solid;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap:  0.5rem;
+    padding: 1.25rem;
+    margin: 0.3125rem;
+    border-radius: 0.625rem;
+    background-color: black;
+    max-width: 100%;
+}
+
+.cushion span {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;    
+    min-width: 4.5rem;
+    max-width: 10rem;
+}
+
+@media (max-width: 48rem) {
+    .board {
+        margin: 0.5rem;
+        padding: 1rem;
+        border-radius: 0.625rem;
+    }
+
+    .cushion {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .cushion span {
+        gap: 0.55rem;    
+        min-width: 2.5rem;
+        max-width: 6rem;
+        width: 100%;
+        align-items: center;
+    }
+}
+.buttons {
+    background-color: beige;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    border-radius: 60% 60% 40% 40%;
+    padding: 1.25rem;
+}
+.buttons:hover {
+    opacity: 0.7;
+    transform: scale(1.15);
+    transition: all 0.2s ease-out;
+}
+.msgs {
+    margin: 0.625rem;
+}
+
+#playbutn:hover,
+#endscore:hover {
+    color: beige;
+    font-weight: bolder;
+    border: red solid;
+    padding: 0.8125rem;
+    box-shadow: 0.0625rem 0.0625rem 0.15625rem black;
+    border-radius: 50%;
+    text-decoration: double underline;
+    transition: all 0.2s ease-out;
+}
+#endscore,
+#playbutn {
+    font-style: inherit;
+    display: inline;
+}
