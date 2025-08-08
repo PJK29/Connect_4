@@ -87,9 +87,9 @@ body {
     font-style: inherit;
     display: inline;
 }
-@media (max-width: 37.5rem) {
+@media (max-width: 48.5rem) {
     .board {
-        margin: 0.5rem;
+        margin: 0.45rem;
         padding: 0.2rem;
         border-radius: 0.625rem;
     }
@@ -111,7 +111,7 @@ body {
 }
 @media(max-width: 22.815rem){
      .board {
-        margin: 0.2rem;
+        margin: 0.1rem;
         padding: 0.1rem;
         border-radius: 0.725rem;
     }
