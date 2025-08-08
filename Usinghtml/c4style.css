@@ -1,5 +1,7 @@
 * {
     color-scheme: dark;
+    box-sizing: border-box;
+    font-family: 'Bubblegum Sans', sans-serif;
 }
 body {
     /* background-color:grey; */
@@ -87,7 +89,7 @@ body {
     transition: all 0.2s ease-out;
 }
 .msgs {
-    margin: 0.625rem;
+    margin: 1.5rem;
 }
 
 #playbutn:hover,

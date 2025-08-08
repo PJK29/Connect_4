@@ -8,6 +8,7 @@ export function endgame(){
   state.playbutton.style.display = "inline";
   state.playbutton.innerText = "Game ended. Click to restart.";
   state.playbutton.style.fontWeight = "bold";
+  state.playbutton.style.fontSize = "1.2rem";
   if(state.bcount>41){
     state.msgbutton.innerText = `Tied Game`;
   }
