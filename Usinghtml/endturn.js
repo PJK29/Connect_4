@@ -4,7 +4,6 @@ let winlinelength = 4;
 let maxcount = 41;//max count without line being made leading to draw
 import { state } from "./C4script.js";
 export function isGameOver(){
-  //console.log("This game sucks.");
   if(state.bcount>maxcount){
   return true;
   }
@@ -27,7 +26,6 @@ export function isGameOver(){
 //if a match is found wcount is incremented and next button in same direction is checked by calling function again
 //else function is returned back to source button and wcount increment is negated.
 function wincon(i,j,p,q){
- // console.log("w? "+i+" "+j+":"+p+" "+q+" ,"+wcount);
   if(wcount>=winlinelength){
     console.log("Woohoo Line made.");
     return true;

@@ -4,7 +4,7 @@ import { state } from "./C4script.js";
 
 export function fill(i){
   state.col[i].index--;
-  console.log("Filling #buttons" + (state.col[i].index+1) + (i+1));
+  console.log("Filling #button" + (state.col[i].index+1) + (i+1));
   const buttons =  document.querySelector("#button" + (state.col[i].index+1) + (i+1)); 
   
   buttons.style.backgroundColor = state.user[state.k].color;
