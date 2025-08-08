@@ -51,30 +51,9 @@ body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;    
+    gap: 0.5rem;    
     min-width: 4.5rem;
     max-width: 10rem;
-}
-
-@media (max-width: 48rem) {
-    .board {
-        margin: 0.5rem;
-        padding: 1rem;
-        border-radius: 0.625rem;
-    }
-
-    .cushion {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .cushion span {
-        gap: 0.55rem;    
-        min-width: 2.5rem;
-        max-width: 6rem;
-        width: 100%;
-        align-items: center;
-    }
 }
 .buttons {
     background-color: beige;
@@ -107,4 +86,45 @@ body {
 #playbutn {
     font-style: inherit;
     display: inline;
+}
+@media (max-width: 37.5rem) {
+    .board {
+        margin: 0.5rem;
+        padding: 0.2rem;
+        border-radius: 0.625rem;
+    }
+    .buttons{
+       padding: 0.95rem;
+       margin-left: 0.75rem;
+       margin-right: 0.75rem;
+    }
+    .cushion{
+        gap : 0.3rem;
+    }
+    .cushion span {
+        gap: 0.45rem;    
+        min-width: 2.5rem;
+        max-width: 6rem;
+        width: 100%;
+        align-items: center;
+    }
+}
+@media(max-width: 22.815rem){
+     .board {
+        margin: 0.2rem;
+        padding: 0.1rem;
+        border-radius: 0.725rem;
+    }
+    .buttons{
+       padding: 0.55rem;
+       margin-left: 0.2rem;
+       margin-right: 0.2rem;
+    }
+    .cushion{
+        gap: 0.015rem;
+        margin: 0.125rem;
+    }
+    .cushion span{
+        gap:0.3rem;
+    }
 }
