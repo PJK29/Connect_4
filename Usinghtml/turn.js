@@ -12,6 +12,7 @@ export function fill(i){
   state.bcount++;
   if(isGameOver())
   endgame();
+  else
   changeturn();
 }
 

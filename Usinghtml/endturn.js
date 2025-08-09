@@ -1,10 +1,10 @@
 //wcount counts same coloured buttons inline
 let wcount = 1;
 let winlinelength = 4;
-let maxcount = 41;//max count without line being made leading to draw
+
 import { state } from "./C4script.js";
 export function isGameOver(){
-  if(state.bcount>maxcount){
+  if(state.bcount>state.maxcount){
   return true;
   }
   if(state.bcount>6){

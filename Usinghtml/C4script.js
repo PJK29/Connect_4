@@ -9,6 +9,8 @@ msgbutton : document.querySelector("#endscore"),
 //bcount counts number of filled tiles
 bcount : 0,
 
+maxcount : 41,//max count without line being made leading to draw
+
 //user array and their colour
 user :  [{Name :"Player 1",color:"red"},{Name : "Player 2",color:"blue"}],
 
