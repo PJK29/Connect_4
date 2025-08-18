@@ -31,9 +31,6 @@ col : [{c:document.querySelector("#col1"),index:6},
 board : [[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2],[2,2,2,2,2,2,2]],
 };
 
-//boolean value to decide to end(1) or continue(0) game
-let game = false;   
-
 state.playbutton.onclick = play;
 //console.log(playbutton); 
     
@@ -43,13 +40,13 @@ function play(){
   state.playbutton.style.display = "none";
   console.log("Play function called!"); 
   changeturn();
-  state.col[0].c.onclick = () => {game = fill(0)};  
-  state.col[1].c.onclick = () => {game = fill(1)};  
-  state.col[2].c.onclick = () => {game = fill(2)};  
-  state.col[3].c.onclick = () => {game = fill(3)};  
-  state.col[4].c.onclick = () => {game = fill(4)};  
-  state.col[5].c.onclick = () => {game = fill(5)};  
-  state.col[6].c.onclick = () => {game = fill(6)}; 
+  state.col[0].c.onclick = () => fill(0);  
+  state.col[1].c.onclick = () => fill(1);  
+  state.col[2].c.onclick = () => fill(2);  
+  state.col[3].c.onclick = () => fill(3);  
+  state.col[4].c.onclick = () => fill(4);  
+  state.col[5].c.onclick = () => fill(5);  
+  state.col[6].c.onclick = () => fill(6); 
 
 }
 
